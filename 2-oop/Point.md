@@ -1,0 +1,1 @@
+Design a Point class whose objects represent a single point in 2D space. Write all methods you think are appropriate, including but not limited to a `distance(Point other)` method.

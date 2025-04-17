@@ -12,6 +12,6 @@ public class LightBulb {
     }
 
     public String toString() {
-        return String.valueOf(this.isOn);
+        return this.isOn? "💡" : "⛭";
     }
 }

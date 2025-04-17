@@ -112,6 +112,11 @@ void main() {
     //println(nextReading(349));
 
     //println(distance(123, 456));
+    int odometerReading1 = 123;
+    int odometerReading2 = 789;
+
+    int x;
+    
     println(distance(123, 789));
     println(distance(789, 123));
 
