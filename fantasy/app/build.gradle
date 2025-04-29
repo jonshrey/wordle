@@ -19,6 +19,8 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation libs.sqlitejdbc
+    implementation libs.hibernate
+    implementation libs.hibernate.dialect
     //implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
 }
 

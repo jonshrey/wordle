@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
 import java.util.Optional;
 
 public class DBUtil implements AutoCloseable{
@@ -25,7 +23,7 @@ public class DBUtil implements AutoCloseable{
      * @param params the list of parameters to insert within the SQL in a safe way
      * @return the list of ids that were affected by the query
      * @throws SQLException
-     * 
+     * This is to be used for DML statements ONLY, not DDL or DQL
      */
     public int runStatement(String sql, Object ...params) throws SQLException {
         try (PreparedStatement statement = this.connection.prepareStatement(sql)){
@@ -33,14 +31,14 @@ public class DBUtil implements AutoCloseable{
             return statement.executeUpdate();
         }
     }
-    
+
     /**
      * 
      * @param query the SQL to be run, with parameters annotated with ?s
      * @param params the list of parameters to insert within the SQL in a safe way
      * @return either a single row ID assu
      * @throws SQLException when, among other things, there is no column called "id"
-     * assumes that the table being queried has a column called "id"
+     * assumes that the table being queried has a column called "id". To be used for DQL statements only, not DML or DDL.
      */
     public Optional<Integer> getSingleId(String query, Object ...params) throws SQLException {
         try (PreparedStatement statement = this.connection.prepareStatement(query)) {

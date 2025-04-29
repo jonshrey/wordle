@@ -3,6 +3,9 @@
 
 [versions]
 sqlitejdbc = "3.49.1.0"
+hibernate = "6.6.13.Final"
 
 [libraries]
 sqlitejdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlitejdbc" }
+hibernate = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate" }
+hibernate-dialect = { module = "org.hibernate.orm:hibernate-community-dialects", version.ref = "hibernate" }
