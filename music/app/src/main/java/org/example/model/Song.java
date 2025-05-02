@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
@@ -28,7 +29,7 @@ public class Song {
     @Fetch(value = FetchMode.JOIN)
     private List<Artist> artists = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.JOIN)
     private Album album;
     

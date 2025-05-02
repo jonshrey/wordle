@@ -53,25 +53,23 @@ public class App {
         chaiyya.setGenre(firstSong.getString("genre"));
 
         var sessionFactory = HibernateUtil.getSessionFactory();
-        // sessionFactory.inTransaction(session -> {
-        //     session.persist(chaiyya);
-        // });
+        sessionFactory.inTransaction(session -> {
+            session.persist(chaiyya);
+        });
         var session = sessionFactory.openSession();
+        var txn = session.beginTransaction();
         var dilSeFromDB = session.find(Album.class, 1);
-        session.close();
-        // var anotherSession = sessionFactory.openSession();
-        // var txn = anotherSession.beginTransaction();
         // anotherSession.merge(dilSeFromDB);
-        // var arRahmanFromDB = dilSeFromDB.getMusicDirector();
-        //     var songToPersist = new Song();
-        //     songToPersist.setName("Dil Se Re");
-        //     songToPersist.setAlbum(dilSeFromDB);
-        //     songToPersist.addArtist(arRahmanFromDB);
-        //     songToPersist.setLanguage("hindi");
-        //     songToPersist.setGenre("romance");
-        // anotherSession.persist(songToPersist);
-        // txn.commit();
-        // anotherSession.close();
+        var arRahmanFromDB = dilSeFromDB.getMusicDirector();
+            var songToPersist = new Song();
+            songToPersist.setName("Dil Se Re");
+            songToPersist.setAlbum(dilSeFromDB);
+            songToPersist.addArtist(arRahmanFromDB);
+            songToPersist.setLanguage("hindi");
+            songToPersist.setGenre("romance");
+        session.persist(songToPersist);
+        txn.commit();
+        session.close();
         System.out.println(dilSeFromDB.getLanguage());
         sessionFactory.close();
     }
