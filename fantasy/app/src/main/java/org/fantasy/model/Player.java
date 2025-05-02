@@ -30,6 +30,7 @@ public class Player {
     @ManyToOne(fetch = FetchType.EAGER)
     private Team team;
 
+
     public Player() {
 
     }

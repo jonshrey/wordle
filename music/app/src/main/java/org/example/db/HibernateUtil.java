@@ -1,7 +1,8 @@
-package org.fantasy.db;
+package org.example.db;
 
-import org.fantasy.model.Player;
-import org.fantasy.model.Team;
+import org.example.model.Album;
+import org.example.model.Artist;
+import org.example.model.Song;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -15,7 +16,7 @@ public class HibernateUtil {
                     .build();
         try {
             sessionFactory = new MetadataSources(registry)             
-                        .addAnnotatedClasses(Team.class, Player.class)   
+                        .addAnnotatedClasses(Artist.class, Album.class, Song.class)   
                         .buildMetadata()                  
                         .buildSessionFactory(); 
         } catch(Exception e) {

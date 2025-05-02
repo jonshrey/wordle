@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Chaiyya Chaiyya",
+        "artists": [
+            {
+                "name": "Sukhwinder Singh",
+                "year_of_birth": "1900",
+                "gender": "Male"
+            },
+            {
+                "name": "Second Artist",
+                "year_of_birth": "1900",
+                "gender": "Female"
+            }
+        ],
+        "album": {
+            "name": "Dil Se",
+            "year_of_release": "1900",
+            "language": "Hindi",
+            "music_director": {
+                "name": "A R Rahman",
+                "year_of_birth": "1900",
+                "gender": "Male"
+            }
+        },
+        "language": "Hindi",
+        "genre": "awesome"
+    }
+]
