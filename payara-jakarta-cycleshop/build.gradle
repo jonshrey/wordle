@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'war'
+    id "fish.payara.micro-gradle-plugin" version "2.0.1"
+}
+
+group = 'org.gap'
+version = '0.1-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_21
+targetCompatibility = JavaVersion.VERSION_21
+
+payaraMicro {
+    payaraVersion = '6.2025.4'
+    deployWar = true
+        useUberJar = false
+    daemon = false
+    commandLineOptions = [port: 8080, contextroot: 'cycleshop']
+    javaCommandLineOptions = [ ea:true] 
+}
+
+dependencies {
+    providedCompile 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:6.1'
+}
+
+repositories {
+    maven {
+        url 'https://nexus.dev.payara.fish/repository/payara-artifacts'
+        name 'payara-nexus-artifacts'
+    }
+    mavenCentral()
+}
+
