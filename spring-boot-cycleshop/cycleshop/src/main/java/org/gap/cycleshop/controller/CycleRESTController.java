@@ -1,8 +1,8 @@
 package org.gap.cycleshop.controller;
 
-import org.gap.cycleshop.model.Cycle;
-import org.gap.cycleshop.model.CustomerCycle;
 import org.gap.cycleshop.repository.CycleRepository;
+import org.gap.cycleshop.entity.CustomerCycle;
+import org.gap.cycleshop.entity.Cycle;
 import org.gap.cycleshop.repository.CustomerCycleRepository;
 import org.gap.cycleshop.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

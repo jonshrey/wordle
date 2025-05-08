@@ -26,6 +26,7 @@ public class CycleHTMLController {
         var allcycles = cycleRepository.findAll();
         model.addAttribute("cycles", allcycles);
         model.addAttribute("user", session.getAttribute("loggedinuser"));
+        
         return "allcycles";
     }
 

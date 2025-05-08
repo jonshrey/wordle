@@ -1,6 +1,6 @@
 package org.gap.cycleshop.controller;
 
-import org.gap.cycleshop.model.Customer;
+import org.gap.cycleshop.entity.Customer;
 import org.gap.cycleshop.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package org.gap.cycleshop.model;
+package org.gap.cycleshop.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
