@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cycles")
-public class CycleController {
+@RequestMapping("/cyclesrestapi")
+public class CycleRESTController {
     @Autowired
 	private CycleRepository cycleRepository;
     @Autowired

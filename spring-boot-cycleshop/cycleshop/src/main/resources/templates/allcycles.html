@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1> Welcome, <span th:text="${user} ? ${user} : 'Unknown'"></span> All cycles</h1>
+        <!--in a for loop, display the name, colour, remaining stock, and cost of borrowing each cycle-->
+        <table style="border: 1px solid;">
+            <tr style="border: 1px solid;">
+                <th style="border: 1px solid;">Model</th>
+                <th style="border: 1px solid;">Colour</th>
+                <th style="border: 1px solid;">Remaining stock</th>
+                <th style="border: 1px solid;">Cost per day to borrow</th>
+            </tr>
+            <tr th:each="cycle : ${cycles}" style="border: 1px solid;">
+                <td th:text="${cycle.model}" style="border: 1px solid;"></td>
+                <td th:text="${cycle.colour}" style="border: 1px solid;"></td>
+                <td th:text="${cycle.stock}" style="border: 1px solid;"></td>
+                <td th:text="${cycle.rentPerDay}" style="border: 1px solid;"></td>
+            </tr>
+        </table>
+    </body>
+</html>
