@@ -1,7 +1,6 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import {signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { WordleServiceService } from '../wordle-service.service';
 
 @Component({
   selector: 'app-guess-input',
