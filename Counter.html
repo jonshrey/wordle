@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p>Count: <span id="x">[x]</span></p>
+        <button id="increment">Click Me!</button>
+        <script>
+            var x = 0;
+            document.getElementById("x").textContent = x;
+            document.getElementById("increment").addEventListener("click", (ev) => {
+                x++;
+                document.getElementById("x").textContent = x;     
+            })
+        </script>
+    </body>
+</html>

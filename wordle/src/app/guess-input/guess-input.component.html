@@ -1,0 +1,6 @@
+<h1>User guess</h1>
+
+<form>
+    <input type="text" [placeholder]="initialGuess()" [(ngModel)]="guess" name="guess">
+    <button type="submit" (click)="submitGuess()">Submit</button>
+</form>

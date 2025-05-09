@@ -1,6 +1,6 @@
 # 8 May 2025
 
-Your task, should you choose to accept it, is:
+Your mission, should you choose to accept it, is:
 
 1. In the /cycles/all table, add a button "borrow" alongside each row.
     1. Clicking the borrow button should borrow, if possible, one unit of the cycle and modify stock accordingly.
@@ -20,3 +20,6 @@ Your task, should you choose to accept it, is:
 Crowd wisdom:
 1. You could write a little bit of javascript that disables the borrow button if there isn't stock
 2. If we're writing javascript, we might have to figure out how "static" file handling works in a spring boot server. (look, there's a main/resources/static folder, it must be there for a reason right?)
+
+Deadline: 4pm.
+This is a GRADED exercise.
