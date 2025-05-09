@@ -20,12 +20,10 @@
                 <td th:text="${cycle.stock}" style="border: 1px solid;"></td>
                 <td th:text="${cycle.rentPerDay}" style="border: 1px solid;"></td>
                 <td>
-                    <form method="post" action="/cycles/borrow">
-                        <input type="hidden" name="cycleid" th:value="${cycle.id}" />
+                    <form method="post" th:action="'/cycles/borrow/' + ${cycle.id}">
                         <button type="submit">Borrow!</button>
                     </form>
-                    <form method="post" action="/cycles/return">
-                        <input type="hidden" name="cycleid" th:value="${cycle.id}" />
+                    <form method="post" th:action="'/cycles/return/' + ${cycle.id}">
                         <button type="submit">Return!</button>
                     </form>
                 </td>

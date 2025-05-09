@@ -12,12 +12,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.server.PathParam;
 
 @Controller
 @RequestMapping("/cycles")
@@ -66,8 +68,8 @@ public class CycleHTMLController {
         return "redirect:/cycles/all";
     }
 
-    @PostMapping("/borrow")
-    public String borrow(@RequestParam("cycleid") Integer cycleId, HttpSession session) {
+    @PostMapping("/borrow/{id}")
+    public String borrow(@PathVariable("id") Integer cycleId, HttpSession session) {
         final Integer userId; 
         try {
             userId = customerService.getLoggedInUserId(session);
@@ -79,8 +81,8 @@ public class CycleHTMLController {
         return "redirect:/cycles/all";
     }
 
-    @PostMapping("/return")
-    public String returnCycle(@RequestParam("cycleid") Integer cycleId, HttpSession session) {
+    @PostMapping("/return/{id}")
+    public String returnCycle(@PathVariable("id") Integer cycleId, HttpSession session) {
         final Integer userId; 
         try {
             userId = customerService.getLoggedInUserId(session);
