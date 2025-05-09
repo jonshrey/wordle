@@ -12,13 +12,29 @@
                 <th style="border: 1px solid;">Colour</th>
                 <th style="border: 1px solid;">Remaining stock</th>
                 <th style="border: 1px solid;">Cost per day to borrow</th>
+                <th style="border: 1px solid;">Action</th>
             </tr>
             <tr th:each="cycle : ${cycles}" style="border: 1px solid;">
                 <td th:text="${cycle.model}" style="border: 1px solid;"></td>
                 <td th:text="${cycle.colour}" style="border: 1px solid;"></td>
                 <td th:text="${cycle.stock}" style="border: 1px solid;"></td>
                 <td th:text="${cycle.rentPerDay}" style="border: 1px solid;"></td>
+                <td>
+                    <form method="post" action="/cycles/borrow">
+                        <input type="hidden" name="cycleid" th:value="${cycle.id}" />
+                        <button type="submit">Borrow!</button>
+                    </form>
+                    <form method="post" action="/cycles/return">
+                        <input type="hidden" name="cycleid" th:value="${cycle.id}" />
+                        <button type="submit">Return!</button>
+                    </form>
+                </td>
             </tr>
         </table>
+        <p>
+            <form method="post" action="/cycles/logout">
+                <button type="submit">Logout</button>
+            </form>
+        </p>
     </body>
 </html>

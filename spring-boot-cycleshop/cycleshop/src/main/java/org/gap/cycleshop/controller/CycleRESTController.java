@@ -1,6 +1,7 @@
 package org.gap.cycleshop.controller;
 
 import org.gap.cycleshop.repository.CycleRepository;
+import org.gap.cycleshop.service.CycleServiceResponse;
 import org.gap.cycleshop.entity.CustomerCycle;
 import org.gap.cycleshop.entity.Cycle;
 import org.gap.cycleshop.repository.CustomerCycleRepository;
@@ -48,15 +49,15 @@ public class CycleRESTController {
     }
 
     @PutMapping("/borrow")
-    public ResponseEntity<BorrowResponse> borrow(@RequestBody BorrowRequest borrowRequest) {
+    public ResponseEntity<CycleServiceResponse> borrow(@RequestBody BorrowRequest borrowRequest) {
         var availableCycles = cycleRepository.findAllByModelAndStockGreaterThan(borrowRequest.model(), 0);
         var optionalUser = userRepository.findByName(borrowRequest.username());
 
         if (availableCycles.size() == 0) {
-            return new ResponseEntity<BorrowResponse>(new BorrowResponse("No cycles remaining of this model", 0), HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<CycleServiceResponse>(new CycleServiceResponse("No cycles remaining of this model", 0), HttpStatus.UNPROCESSABLE_ENTITY);
         }
         if (optionalUser.isEmpty()) {
-            return new ResponseEntity<BorrowResponse>( new BorrowResponse("User not found!", 0), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<CycleServiceResponse>( new CycleServiceResponse("User not found!", 0), HttpStatus.NOT_FOUND);
         }
 
         var selectedCycle = availableCycles.get(0);
@@ -69,8 +70,8 @@ public class CycleRESTController {
 
         userCycleRepository.save(userCycle);
         cycleRepository.save(selectedCycle);
-        return new ResponseEntity<BorrowResponse>(
-            new BorrowResponse("Successfully borrowed cycle at " + userCycle.getBorrowedAt() + "with bookingid " + userCycle.getBookingId(), selectedCycle.getStock())
+        return new ResponseEntity<CycleServiceResponse>(
+            new CycleServiceResponse("Successfully borrowed cycle at " + userCycle.getBorrowedAt() + "with bookingid " + userCycle.getBookingId(), selectedCycle.getStock())
             , HttpStatus.CREATED);
     }
 
