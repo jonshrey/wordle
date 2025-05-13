@@ -1,7 +1,7 @@
 
 <form #test>
     @for (_ of guessLetters; track $index; let idx=$index) {
-        <input type="text" [placeholder]="initialGuess()[idx]" [(ngModel)]="guessLetters[idx]" [name]="'guess' + idx" size="1" maxlength="1" (keypress)="focusToNextInput($event)">
+        <input type="text" [placeholder]="initialGuess()[idx]" [(ngModel)]="guessLetters[idx]" [name]="'guess' + idx" size="1" maxlength="1" [disabled]="disabledInTypeScript" (keypress)="focusToNextInput($event)" [classList]="[decideClassFromFeedback(idx)]">
     }
     <button type="submit" (click)="submitGuess()" [disabled]="disabledInTypeScript">Submit</button>
 </form>

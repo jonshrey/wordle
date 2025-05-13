@@ -62,7 +62,8 @@
               "buildTarget": "wordle:build:production"
             },
             "development": {
-              "buildTarget": "wordle:build:development"
+              "buildTarget": "wordle:build:development",
+              "port": 5173
             }
           },
           "defaultConfiguration": "development"

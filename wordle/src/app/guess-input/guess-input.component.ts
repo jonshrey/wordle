@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, output, Signal, ViewChild, viewChild } from '@angular/core';
+import { Component, ElementRef, input, output, Signal, viewChild } from '@angular/core';
 import {signal} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -10,10 +10,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class GuessInputComponent {
   initialGuess = input<string[]>(["", "", "", "", ""]);
-  guessLetters = [signal(""), signal(""), signal(""), signal(""), signal("")];
+  feedbacks = input<string[]>(["", "", "", "", ""]);
+
   wordInputted = output<string>();
+  
+  guessLetters = [signal(""), signal(""), signal(""), signal(""), signal("")];
   disabledInTypeScript = false;
-  form: Signal<ElementRef | undefined> = viewChild('test')
+  form: Signal<ElementRef | undefined> = viewChild('test');
+  
   
   submitGuess(): void {
     this.wordInputted.emit(this.guessLetters.map(sig => sig()).join("")); 
@@ -35,5 +39,14 @@ export class GuessInputComponent {
     if (elem.nextElementSibling && elem.nextElementSibling instanceof HTMLInputElement) {
       (elem.nextElementSibling as HTMLInputElement).focus();
     }
+  }
+
+  decideClassFromFeedback(idx: number) {
+    return {
+      'R': 'red',
+      'Y': 'yellow',
+      'G': 'green',
+      '': ''
+    }[this.feedbacks()[idx]];
   }
 }
