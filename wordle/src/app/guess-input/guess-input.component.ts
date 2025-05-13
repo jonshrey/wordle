@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './guess-input.component.css'
 })
 export class GuessInputComponent {
-  initialGuess = input<string[]>(["", "", "", "", ""]);
   feedbacks = input<string[]>(["", "", "", "", ""]);
 
   wordInputted = output<string>();
