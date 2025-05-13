@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, viewChildren } from '@angular/core';
 import { CounterComponent } from "./counter/counter.component";
 import { GuessInputComponent } from "./guess-input/guess-input.component";
 import { WordleServiceService } from './wordle-service.service';
@@ -11,12 +11,16 @@ import { WordleServiceService } from './wordle-service.service';
 })
 export class AppComponent {
   title = 'wordle';
-  initialGuess = ["H", "O", "U", "S", "E"];
-  historicGuesses = [];
+  initialGuess = ["", "", "", "", ""];
+  historicGuesses = ["", "", "", "", "", ""];
+  inputs = viewChildren(GuessInputComponent);
 
   private wordleService = inject(WordleServiceService);
 
-  submitGuess(guess: string) {
+  submitGuess(guess: string, idx: number) {
     this.wordleService.submitGuess(guess);
+    this.historicGuesses[idx] = guess;
+    if (idx < this.inputs().length - 1)
+      this.inputs()[idx + 1].focusToFirstInput();
   }
 }
