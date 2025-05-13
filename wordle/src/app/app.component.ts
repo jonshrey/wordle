@@ -11,7 +11,8 @@ import { WordleServiceService } from './wordle-service.service';
 })
 export class AppComponent {
   title = 'wordle';
-  initialGuess = 'HOUSE';
+  initialGuess = ["H", "O", "U", "S", "E"];
+  historicGuesses = [];
 
   private wordleService = inject(WordleServiceService);
 

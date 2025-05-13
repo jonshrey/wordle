@@ -9,16 +9,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './guess-input.component.css'
 })
 export class GuessInputComponent {
-  initialGuess = input<string>();
-  guess = signal("");
+  initialGuess = input<string[]>(["", "", "", "", ""]);
+  guessLetters = [signal(""), signal(""), signal(""), signal(""), signal("")];
   wordInputted = output<string>();
 
-  logGuessToConsole(): void {
-    console.log(this.guess());
-  }
-
   submitGuess(): void {
-    this.wordInputted.emit(this.guess()); 
+    this.wordInputted.emit(this.guessLetters.map(sig => sig()).join("")); 
   }
 
 }

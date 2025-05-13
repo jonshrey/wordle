@@ -1,6 +1,8 @@
 <h1>User guess</h1>
 
 <form>
-    <input type="text" [placeholder]="initialGuess()" [(ngModel)]="guess" name="guess">
+    @for (_ of guessLetters; track $index; let idx=$index) {
+        <input type="text" [placeholder]="initialGuess()[idx]" [(ngModel)]="guessLetters[idx]" [name]="'guess' + idx" size="1">
+    }
     <button type="submit" (click)="submitGuess()">Submit</button>
 </form>
