@@ -1,15 +1,25 @@
 <h1>Wordle: Welcome {{ username() }}</h1>
-<p style="color: red;">{{errorMessage()}}</p>
+<p style="color: red;">{{ errorMessage() }}</p>
+
 @if (userId() === "") {
-    <app-registration-form (nameSubmitted)="register($event)"></app-registration-form>
+  <app-registration-form (nameSubmitted)="register($event)"></app-registration-form>
+}
+@else if (!isGameCreated()) {
+  <button (click)="createNewGame()">Create new game!</button>
 }
 
-@else if(!isGameCreated()) {
-    <button (click)="createNewGame()">Create new game!</button>
-}
+<div> @if (isGameCreated()) {
+  @for (_ of historicGuesses; track $index) {
+    <app-guess-input
+      (wordInputted)="submitGuess($event, $index)"
+      [feedbacks]="getSplitFeedbackFor($index)">
+    </app-guess-input>
 
-@if (isGameCreated()) {
-    @for (_ of historicGuesses; track $index) {
-        <app-guess-input (wordInputted)="submitGuess($event, $index)" [feedbacks]="getSplitFeedbackFor($index)"/>
-    }
-}
+  }
+
+   <app-keyboard
+      (keyPress)="handleKeyPress($event)"
+      [letterStates]="letterStates()"
+    ></app-keyboard>
+ }
+</div>

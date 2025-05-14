@@ -1,0 +1,127 @@
+.keyboard-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  gap: 6px;
+}
+
+.keyboard-key {
+  min-width: 30px;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d3d6da;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.keyboard-key.large-key {
+  min-width: 60px;
+}
+
+.keyboard-key.green {
+  background-color: #6aaa64;
+  color: white;
+}
+
+.keyboard-key.yellow {
+  background-color: #c9b458;
+  color: white;
+}
+
+.keyboard-key.red {
+  background-color: #787c7e;
+  color: white;
+}
+/* keyboard.component.css */
+.keyboard {
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  gap: 5px;
+}
+
+.key {
+  min-width: 30px;
+  height: 50px;
+  border: none;
+  border-radius: 4px;
+  background: #d3d6da;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+.key.large {
+  min-width: 60px;
+}
+
+/* Wordle-like color scheme */
+.key.correct {
+  background: #6aaa64;
+  color: white;
+}
+
+.key.present {
+  background: #c9b458;
+  color: white;
+}
+
+.key.absent {
+  background: #787c7e;
+  color: white;
+}
+.keyboard-key {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.keyboard-key:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.keyboard-key:focus:not(:active)::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}

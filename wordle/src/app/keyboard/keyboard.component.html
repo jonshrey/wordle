@@ -1,0 +1,16 @@
+<!-- keyboard.component.html -->
+<div class="keyboard">
+  @for (row of keys; track row) {
+    <div class="keyboard-row">
+      @for (key of row; track key) {
+        <button
+          class="key {{getKeyClass(key)}}"
+          (click)="onKeyClick(key)"
+          [class.large]="key.length > 1"
+        >
+          {{ key }}
+        </button>
+      }
+    </div>
+  }
+</div>
